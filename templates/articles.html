@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+{% for post in post %}
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-title-area">
+                        <h3 style="font-family: 'Merriweather', serif;">{{post.Title}}</h3>
+                        <div class="blog-title-area">
+                            <div class="post-sharing">
+                                <ul class="list-inline">
+                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                    <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="blog-meta big-meta" >
+                            <small><a href="garden-single.html" title="">{{post.DOP}}</a></small>
+                            <small><a href="blog-author.html" title="">by {{post.Author}}</a></small>
+                        </div><!-- end meta -->
+                    </div><!-- end title -->
+                    <div class="blog-content">
+                        <img src="{{post.Post_Image1.url}}"  width="100%" alt="">
+                        <p style="font-family: 'Montserrat', sans-serif;">{{post.Content|linebreaks}}</p>
+                    </div><!-- end pp -->
+                </div><!-- end content -->
+        <hr class="invis1">
+        <div class="custombox clearfix">
+            <h4 class="small-title">{{no_of_comment}} Comments</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="comments-list">
+                        {% for comment in comment %}
+                        <div class="media">
+                                <img src="{{comment.author_pic.url}}" alt="" class="rounded-circle">
+                            <div class="media-body">
+                                <h4 class="media-heading user_name">{{comment.Author}}
+                                    <small>{{comment.Date}}</small></h4>
+                                <p>{{comment.Content|linebreaks}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div>
+        <hr class="invis1">
+        <div class="custombox clearfix">
+            <h4 class="small-title">Leave a Comment</h4>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="/post/{{post.Slug}}" method="POST" class="form-wrapper">{% csrf_token %}
+                        <textarea class="form-control" name="comment" placeholder="Your comment"></textarea>
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- end page-wrapper --><!-- end col -->
+<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+    <div class="sidebar">
+        <div class="widget">
+            <h2 class="widget-title">Related Posts</h2>
+            <div class="blog-list-widget">
+                <div class="list-group">
+                    {% for related_post in related_post %}
+                    <a href="/post/{{related_post.Slug}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="w-100 justify-content-between">
+                            <img src="{{related_post.Post_Image.url}}" alt="" class="img-fluid float-left">
+                            <h5 class="mb-1">{{related_post.Title}}</h5>
+                            <small>{{related_post.DOP}}</small>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    </div>
+                    </div>
+                    </div>
+
+    </div>
+    </div>
+    </div>
+</div>
+</section>
+
+
+{% endfor %}
+{% endblock %}

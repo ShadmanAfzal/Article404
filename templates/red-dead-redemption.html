@@ -1,0 +1,99 @@
+<style>
+    #paragraph {
+        font-family: 'Montserrat', sans-serif;
+    }
+</style>
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-title-area">
+                        <h3 style="font-family: 'Merriweather', serif;">Red Dead Redemption</h3>
+                        <h4 style="font-family: 'Merriweather', serif;">The Story</h4>
+
+                        <div class="blog-title-area">
+                            <div class="post-sharing">
+                                <ul class="list-inline">
+                                    <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i>
+                                            <span class="down-mobile">Share on Facebook</span></a></li>
+                                    <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i>
+                                            <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                    <li><a href="#" class="gp-button btn btn-primary"><i
+                                                class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="blog-meta big-meta">
+                            <small><a href="#" title="">19 July, 2019</a></small>
+                            <small><a href="#" title="">by Justin</a></small>
+                        </div><!-- end meta -->
+                    </div><!-- end title -->
+                    <div class="blog-content">
+                        <img src={% static "upload/red.jpg" %} width="100%" alt="">
+                        <p style="padding-top: 10px;" id="paragraph">“Red Dead Redemption 2” doesn’t deliver one story,
+                            it delivers 23 of them. And in true Rockstar Game fashion, that’s not the game’s most
+                            impressive feat.<p>
+
+                                <p id="paragraph">In taking on the prequel story of what made “Red Dead Redemption’s”
+                                    John Marston the redeemed vengeance-seeking gunman he became, Rockstar drops players
+                                    in the role, not of Marston, but Arthur Morgan, another member of the Dutch Van der
+                                    Linde Gang. <br>
+
+                                    The team of nearly 2,000 spent eight years working to breath life into the 22 other
+                                    members of the gang in a way that is meant to both provide depth to Morgan and give
+                                    the world that he inhabits meaningful friends, all of whom have their own powerful
+                                    stories.</p>
+
+                                <p id="paragraph">To do this, Rockstar Games tells Variety, the studio created so many
+                                    lines of dialog and AI-controlled triggers that the game does away with the need for
+                                    cutscenes, overt missions and even a singular take on who Arthur is, delivering
+                                    instead a living world and an Arthur shaped by developer and player.
+
+                                </p>
+                                <img src={% static "upload/gang.jpg" %} width="100%" alt=""
+                                    style="margin-bottom: 10px;">
+                                <h4>Characters</h4>
+                                <p id="paragraph">“We had to be careful not to John it up too much,” “Red Dead Redemption 2” producer Rob Nelson said, referencing John Marston who was the beloved central character in “Red Dead Redemption,” but is one of 23 meaningful characters in — and notably not the one controlled by players — in prequel “Red Dead Redemption 2.”</p>
+
+                                <p id="paragraph">“We don’t want to disappoint people. He was a character who really resonated. It’s exciting to have him back playing as a different character. But it’s also a bit of a challenge, a good challenge to have.”</p>
+
+                                <p id="paragraph">People who played the first game will know Marston’s story, or at least think they do, and that could be limiting to the writers. That’s just one of myriad challenges the team faced in working to give life not just to their central character, but to make each of the gang’s 23 members feel like heroes in their own stories.
+                                </p>
+                                <p id="paragraph">
+                                    “A big cast of main characters was an advantage in many ways…it gave us a broad and varied set of perspectives and personalities to draw from and helped create the story we wanted – a gang on the run that functions as its own society, but it also created a lot of complexity,”  Michael Unsworth, senior creative writer on “Red Dead Redemption 2,” told Variety. “We knew we needed a diverse and interesting mix of characters for Dutch’s gang and the challenge with any big ensemble cast like this is making them all stand out in some way and feel distinct from one another without descending into stereotype.”</p>
+
+                    </div><!-- end pp -->
+                </div><!-- end content -->
+            </div><!-- end page-wrapper -->
+            <!-- end col -->
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                <div class="sidebar">
+                    <div class="widget">
+                        <h2 class="widget-title">Related Posts</h2>
+                        <div class="blog-list-widget">
+                            <div class="list-group">
+                                {% for related_post in related_post %}
+                                <a href="/post/{{related_post.Slug}}"
+                                    class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 justify-content-between">
+                                        <img src="{{related_post.Post_Image.url}}" alt="" class="img-fluid float-left">
+                                        <h5 class="mb-1">{{related_post.Title}}</h5>
+                                        <small>{{related_post.DOP}}</small>
+                                    </div>
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.611229697133!2d77.2495771148134!3d28.551402982449805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5f7ed9f81%3A0x9591c692ba36c8e6!2sNehru%20Place!5e0!3m2!1sen!2sin!4v1578812214912!5m2!1sen!2sin" width="100%" height="400px" frameborder="0"  allowfullscreen="true"></iframe>
+</div>
+<section class="section wb">
+    <div class="container">
+                <div class="page-wrapper">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                           <div style="font-size: 30px; padding-bottom: 20px; color: black; font-family: 'Montserrat', sans-serif; margin-top: -5px;"> Contact us</div>
+                            <form method="POST" action="/contact" class="form-wrapper">{% csrf_token %}
+                                {% if user.is_authenticated %}
+                                <input type="text" class="form-control" name="name" placeholder="Your name" value="{{user.username}}" required style="color: black;">
+                                <input type="text" class="form-control" name="email" placeholder="Email address" value="{{user.email}}" required style="color: black;">
+                                <!-- <input type="text" class="form-control" placeholder="Phone" value="{{user.Phone_Number}}"> -->
+                                {% else %}
+                                <!-- <input type="text" class="form-control" placeholder="Your name" > -->
+                                <input type="text" class="form-control" name="name" placeholder="Your name"  required style="color: black;">
+                                <input type="text" class="form-control" name="email" placeholder="Email addresss" required style="color: black;">
+                               
+                                {% endif %}
+                                <input type="text" class="form-control" name="choice" placeholder="Subject" required style="color: black;">
+                                <textarea class="form-control" name="feedback" placeholder="Your message" required></textarea>
+                                <button type="submit" class="btn btn-primary">Send <i class="fa fa-envelope-open-o"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- end page-wrapper -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+{% endblock %}

@@ -1,0 +1,69 @@
+<style>
+    #paragraph {
+       font-family: 'Montserrat', sans-serif;
+    }
+   </style>
+   {% extends "base.html" %}
+   {% load static %}
+   {% block body %}
+   <section class="section wb">
+       <div class="container">
+           <div class="row">
+               <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                   <div class="page-wrapper">
+                       <div class="blog-title-area">
+                           <h3 style="font-family: 'Merriweather', serif;">Assassin's Creed</h3>
+                           <h4 style="font-family: 'Merriweather', serif;">ELECTRONIC GAME</h4>
+                           
+                           <div class="blog-title-area">
+                               <div class="post-sharing">
+                                   <ul class="list-inline">
+                                       <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
+                                       <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
+                                       <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                   </ul>
+                               </div>
+                           </div>
+                           
+                           <div class="blog-meta big-meta" >
+                               <small><a href="#" title="">21 July, 2017</a></small>
+                               <small><a href="#" title="">by Jordon</a></small>
+                           </div><!-- end meta -->
+                       </div><!-- end title -->
+                       <div class="blog-content">
+                           <img src= {% static "upload/assassins.jpg" %}  width="100%" alt="">
+                           <p style="padding-top: 10px;" id="paragraph">Assassin’s Creed, computer and console electronic game created and distributed in 2007 by the French game developer Ubisoft Entertainment. Assassin’s Creed was one of the premier titles in the third-person stealth genre, and it was championed for its stunning visuals and original story line.<p>
+   
+                           <p id="paragraph">In Assassin’s Creed, players take the role of modern-day bartender Desmond Miles, who has been captured and forced to test a machine that allows people to relive their ancestors’ memories through their own DNA. Miles journeys back to 1191 and takes the role of a Crusades-era Muslim Assassin who does battle with the Knights Templar and uncovers the mystery of sacred artifacts and ancient organizations. The story is periodically interrupted by modern-day interludes as Miles deals with the side effects of the memories.</p>
+                               
+                           <p id="paragraph">Play in Assassin’s Creed is centred on avoiding confrontation rather than seeking it out. A meter tracks a character’s visibility and the environment status as play progresses; character commands allow a player to blend in with crowds, keeping a low profile to avoid detection. Eagle vision, a unique ability, allows players to see allies and enemies in different colours, making it easier to avoid harm and to find friends. Assassin’s Creed was a surprise hit for Ubisoft, achieving both commercial and critical success. It spawned a series of graphic novels as well as a number of sequels and spin-offs, notably Assassin’s Creed 2 (2009) and Assassin’s Creed 3 (2012).
+                               
+                               </p>
+                       </div><!-- end pp -->
+                   </div><!-- end content -->
+       </div><!-- end page-wrapper --><!-- end col -->
+   <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+       <div class="sidebar">
+           <div class="widget">
+               <h2 class="widget-title">Related Posts</h2>
+               <div class="blog-list-widget">
+                   <div class="list-group">
+                       {% for related_post in related_post %}
+                       <a href="/post/{{related_post.Slug}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                           <div class="w-100 justify-content-between">
+                               <img src="{{related_post.Post_Image.url}}" alt="" class="img-fluid float-left">
+                               <h5 class="mb-1">{{related_post.Title}}</h5>
+                               <small>{{related_post.DOP}}</small>
+                           </div>
+                       </a>
+                       {% endfor %}
+                       </div>
+                       </div>
+                       </div>
+   
+       </div>
+       </div>
+       </div>
+   </div>
+   </section>
+   {% endblock %}

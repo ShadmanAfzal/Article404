@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<br>
+<section class="section first-section">
+    <div class="container-fluid">
+        <div class="masonry-blog clearfix">
+            <div class="left-side">
+                <div class="masonry-box post-media">
+                    <a href="/read/prince_of_persia"> 
+                    <img src={% static "upload/prince.jpg" %} alt="" class="img-fluid">
+                    </a>    
+                     <div class="shadoweffect">
+                        <div class="shadow-desc">
+                            <div class="blog-meta">
+                                <span class="bg">Gaming</span>
+                                <h4><a href="/read/prince_of_persia" title="">Prince of Persia</a></h4>
+                                <small><a href="#" title="">21 July, 2017</a></small>
+                                <small><a href="#" title="">by Jordon</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end shadow-desc -->
+                    </div><!-- end shadow -->
+                </div><!-- end post-media -->
+            </div><!-- end left-side -->
+
+            <div class="center-side">
+                <div class="masonry-box post-media">
+                     <img src={% static "upload/gta5.jpg" %} alt="" class="img-fluid" style="width:400; height:500;" >
+                     <div class="shadoweffect">
+                        <div class="shadow-desc">
+                            <div class="blog-meta">
+                                <span class=""><a href="#" title="">Gaming</a></span>
+                                <h4><a href="/read/red_dead_redemption_2" title="" >Red Dead Redemption</a></h4>
+                                <small><a href="/read/red_dead_redemption_2" title="">19 July, 2019</a></small>
+                                <small><a href="#" title="">by Justin</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end shadow-desc -->
+                    </div><!-- end shadow -->
+                </div><!-- end post-media -->
+            </div><!-- end left-side -->
+
+            <div class="right-side">
+                <div class="masonry-box post-media">
+                     <img src={% static "upload/assains.jpg" %} alt="" class="img-fluid">
+                     <div class="shadoweffect">
+                        <div class="shadow-desc">
+                            <div class="blog-meta">
+                                <span class="bg"><a href="read/Assassins-Creed" title="">Gaming</a></span>
+                                <h4><a href="read/Assassins-Creed" title="">Assassin's creed</a></h4>
+                                <small><a href="read/Assassins-Creed" title="">23 October, 2020</a></small>
+                                <small><a href="#" title="">by Jessica</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end shadow-desc -->
+                     </div><!-- end shadow -->
+                </div><!-- end post-media -->
+            </div><!-- end right-side -->
+        </div><!-- end masonry -->
+    </div>
+</section>
+
+
+<section class="section wb">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                <div class="page-wrapper">
+                    <div class="blog-list clearfix">
+                        {% for post in post %}
+                        <div class="blog-box row">
+                            <div class="col-md-5">
+                                <div class="post-media">
+                                    <a href="post/{{post.Slug}}" title="">
+                                        <img src="{{post.Post_Image.url}}" alt="" class="img-fluid" style="width: 400px; height: 250px;">
+                                        <div class="hovereffect"></div>
+                                    </a>
+                                </div><!-- end media -->
+                            </div><!-- end col -->
+
+                            <div class="blog-meta big-meta col-md-7">
+                                <span class="bg-red">{{post.category}}</span>
+                                <h4><a href="post/{{post.Slug}}" title="">{{post.Title}}</a></h4>
+                                <p>{{post.Content|truncatechars:300}}</p>
+                                <small><a href="garden-single.html" title=""  style="font-family: 'Montserrat', sans-serif;">{{post.DOP}}</a></small>
+                                <small><a href="#" title="" style="font-family: 'Montserrat', sans-serif;">by {{post.Author}}</a></small>
+                            </div><!-- end meta -->
+                        </div><!-- end blog-box -->
+                        <hr class="invis">
+                        {% endfor %}
+                        </div>
+                        </div>
+            </div>
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                <div class="sidebar">
+                    <div class="widget">
+                        <h2 class="widget-title">Recent Posts</h2>
+                        <div class="blog-list-widget">
+                            <div class="list-group">
+                                {% for post in post %}
+                                {% if forloop.counter > 1 %}
+                                <a href="post/{{post.Slug}}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="w-100 justify-content-between">
+                                        <img src="{{post.Post_Image.url}}" alt="" class="img-fluid float-left">
+                                        <h5 class="mb" >{{post.Title}}</h5>
+                                        <small>{{post.DOP}}</small>
+                                    </div>
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                </section>
+{% endblock body %}
