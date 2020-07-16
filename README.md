@@ -6,4 +6,4 @@ Blog and Articles about new and old school Video-games. Built using Django(Back-
 2. Bootstrap 3
 
 ## Backend
-1. Sqlite
+1. SQLITE
