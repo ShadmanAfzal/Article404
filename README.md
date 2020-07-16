@@ -1,5 +1,5 @@
 # Article404
-Blog and Articles about new and old schools Video-games. Built using Django(Back-End).
+Blog and Articles about new and old school Video-games. Built using Django(Back-End).
 
 ## Tech Used
 1. Django
